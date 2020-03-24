@@ -12,6 +12,9 @@
 
 <a name="pricing"></a>
 ## 2. Pricing
+All details with regards to pricing could be found here: https://azure.microsoft.com/en-us/pricing/details/databricks/
+Below article explains some of the details and summarizes the most important differences.
+
 Cost related to Databricks usage depends on:
 - DBUs (Databricks Units) - Each running cluster node generates DBUs according to its size. Available in *pay-as-you-go* and *pre-purchased* offerings.
 - VMs (Virtual Machines, Disks, Network, Public IP Addresses)
@@ -29,9 +32,16 @@ where:
 
 <a name="pricing-tiers"></a>
 ### 2.1 Pricing Tiers
-
+There are 2 different pricing tiers offered by Azure Databricks:
 * Standard
 * Premium
+
+The main difference is that with Standard tier you will not get:
+* RBAC for any of the objects (everyone is an admin)
+* Credential Passthrough for clusters is not available (ACLs on ADLS mean nothing)
+* JDBC/ODBC Endpoint Authentication (no authentication to HIVE)
+
+You may downgrade/upgrade pricing tier by redeploying Databricks Workspace with the same name (using the same ARM template) but with another pricing tier.
 
 <a name="pricing-workloads"></a>
 ### 2.2 Workloads
