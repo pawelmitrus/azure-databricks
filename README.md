@@ -32,11 +32,11 @@ where:
 
 <a name="pricing-tiers"></a>
 ### 2.1 Pricing Tiers
-There are 2 different pricing tiers offered by Azure Databricks:
+Price of DBU depends on pricing tier of Databricks workspace. There are 2 different pricing tiers offered by Azure Databricks:
 * Standard
 * Premium
 
-The main difference is that with Standard tier you will not get:
+The main difference is that with *Standard* tier you will not get:
 * RBAC for any of the objects (everyone is an admin)
 * Credential Passthrough for clusters is not available (ACLs on ADLS mean nothing)
 * JDBC/ODBC Endpoint Authentication (no authentication to HIVE)
@@ -45,10 +45,15 @@ You may downgrade/upgrade pricing tier by redeploying Databricks Workspace with 
 
 <a name="pricing-workloads"></a>
 ### 2.2 Workloads
-
+Price of DBU depends on workload executed on Databricks workspace. Workloads cannot be pre-provisioned or set. They are set depending on the actions taken. There are 3 different workloads offered by Azure Databricks:
 * Engineering Light
 * Engineering
 * Analytics
+
+The main differences for given workloads are:
+* Engineering Light - only when cluster is running with Databricks Light runtime (very close to pure Apache Spark, does not support features like autoscaling, delta lake, high concurrent cluster, notebooks and collaborative features, submiting notebook as a job etc. 
+* Engineering - only when jobs are run with automated clusters. Well suited for scenarios when Databricks are used as ETL engine and we do not plan to plenty of small jobs (cost overhead of spinning up new automated cluster for every single small job would be significant)
+* Analytics - any other scenario - using interactive clusters, using notebooks, collaboration, history version, integration with R studio, using high concurrency clusters, BI integration through JDBC/ODBC endpoint
 
 <a name="pricing-costs"></a>
 ### 2.3 Analyze costs
